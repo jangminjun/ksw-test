@@ -1,0 +1,26 @@
+---
+id: greetings
+version: '1.0'
+name: Hello Person
+start: InjectHello
+functions:
+- name: printOutput
+  type: custom
+  operation: sysout
+states:
+- name: InjectHello
+  type: inject
+  data:
+    message: 'Hello '
+  transition: PrintMessage
+- name: PrintMessage
+  type: operation
+  actions:
+  - name: print
+    functionRef:
+      refName: printOutput
+      arguments:
+        message: "${ .message + .name }"
+  stateDataFilter:
+    output: "${ { message: (.message + .name) } }"
+  end: true
