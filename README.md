@@ -24,12 +24,12 @@ quarkus create app \
   -x=quarkus-resteasy-jackson \
   -x=quarkus-smallrye-openapi \
   -x=kubernetes \
- org.acme:my-first-ksw:1.0
+ org.acme:ksw-test:1.0
 ```
 
-The `org.acme:my-first-ksw:1.0` is the group id, artifact id, and version of your project.
+The `org.acme:ksw-test:1.0` is the group id, artifact id, and version of your project.
 
-This command will create a Maven Quarkus project in the `my-first-ksw` directory with all required Kogito dependencies.
+This command will create a Maven Quarkus project in the `ksw-test` directory with all required Kogito dependencies.
 
 Next, to make sure everything is working fine, try to compile the project with:
 
@@ -123,7 +123,7 @@ quarkus build \
 After building the image, you can start the container running:
 
 ```shell
-docker run --rm -it -p8080:8080 dev.local/my-first-ksw:1.0
+docker run --rm -it -p8080:8080 dev.local/ksw-test:1.0
 ```
 
 You can then interact with the application the same way you did before in the previous sections.
@@ -145,7 +145,7 @@ quarkus build \
 # Install the app!
 kubectl apply -f target/kubernetes/knative.yml
 
-# You should see something like "service.serving.knative.dev/my-first-ksw created" in the terminal
+# You should see something like "service.serving.knative.dev/ksw-test created" in the terminal
 ```
 
 Wait a couple of seconds and run `kn service list`:
@@ -154,7 +154,7 @@ Wait a couple of seconds and run `kn service list`:
 kn service list
 
 NAME           URL                                              LATEST               AGE   CONDITIONS   READY   REASON
-my-first-ksw   http://my-first-ksw.default.127.0.0.1.sslip.io   my-first-ksw-00001   12s   3 OK / 3     True  
+ksw-test   http://ksw-test.default.127.0.0.1.sslip.io   ksw-test-00001   12s   3 OK / 3     True  
 ```
 
 Access the application as you normally would.
